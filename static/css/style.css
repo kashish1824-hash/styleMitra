@@ -1,0 +1,629 @@
+/* ============================================
+   StyleMitra — Design Tokens
+   Palette inspired by Indian textile dye colors
+   ============================================ */
+
+:root {
+  --ivory: #FAF6F0;
+  --ink: #1A1410;
+  --umber: #3D2B1F;
+  --terracotta: #C45D3C;
+  --terracotta-dark: #A84A2D;
+  --sage: #7A8B6F;
+  --mustard: #D4A017;
+  --line: rgba(26, 20, 16, 0.12);
+  --card: #FFFFFF;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Work Sans", -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--terracotta);
+}
+
+/* ---------- Layout shells ---------- */
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.wrap-narrow {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Top mark ---------- */
+
+.site-mark {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 28px 0 18px;
+  border-bottom: 1px solid var(--line);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.site-mark .logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.site-mark .logo span {
+  color: var(--terracotta);
+}
+
+.site-mark .tagline {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--umber);
+  opacity: 0.65;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 64px 0 32px;
+}
+
+.hero .eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 18px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--terracotta);
+}
+
+.hero p.lede {
+  font-size: 1.1rem;
+  color: var(--umber);
+  max-width: 46ch;
+  margin: 0 0 8px;
+}
+
+/* ---------- Form card (quiz) ---------- */
+
+.quiz-card {
+  background: var(--card);
+  border-radius: 22px;
+  padding: 40px;
+  margin-top: 36px;
+  box-shadow: 0 1px 2px rgba(26,20,16,0.04), 0 16px 40px rgba(26,20,16,0.06);
+  border: 1px solid var(--line);
+}
+
+.field {
+  margin-bottom: 28px;
+}
+
+.field:last-of-type {
+  margin-bottom: 0;
+}
+
+.field-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.field-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--terracotta);
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.field-hint {
+  font-size: 0.88rem;
+  color: var(--umber);
+  opacity: 0.75;
+  margin: 6px 0 0;
+  max-width: 56ch;
+}
+
+/* File input */
+
+.file-drop {
+  display: block;
+  border: 1.5px dashed var(--line);
+  border-radius: 14px;
+  padding: 28px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  background: var(--ivory);
+}
+
+.file-drop:hover,
+.file-drop.has-file {
+  border-color: var(--terracotta);
+  background: #FFF9F5;
+}
+
+.file-drop input {
+  display: none;
+}
+
+.file-drop .file-drop-label {
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+.file-drop .file-drop-sub {
+  font-size: 0.85rem;
+  color: var(--umber);
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+/* Pill / radio choice grid */
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.choice-grid input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice-pill {
+  display: block;
+  position: relative;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.12s ease;
+  background: var(--card);
+}
+
+.choice-pill:hover {
+  border-color: var(--terracotta);
+}
+
+.choice-grid input[type="radio"]:checked + .choice-pill {
+  border-color: var(--terracotta);
+  background: var(--terracotta);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Submit button */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 18px 24px;
+  margin-top: 32px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background: var(--terracotta-dark);
+}
+
+.btn-primary:active {
+  transform: scale(0.99);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  padding: 60px 0 40px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--umber);
+  opacity: 0.6;
+}
+
+/* ============================================
+   RESULT PAGE
+   ============================================ */
+
+.result-hero {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  padding: 48px 0 24px;
+  align-items: start;
+}
+
+.result-hero img.profile-shot {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 3/4;
+  box-shadow: 0 12px 32px rgba(26,20,16,0.12);
+}
+
+.result-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.result-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.05;
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+
+.personality-banner {
+  background: var(--ink);
+  color: var(--ivory);
+  border-radius: 16px;
+  padding: 22px 26px;
+  margin: 18px 0;
+}
+
+.personality-banner h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin: 0 0 6px;
+  color: var(--mustard);
+}
+
+.personality-banner p {
+  margin: 0;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.tag {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tag .tag-label {
+  opacity: 0.55;
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+/* Section headers */
+
+.section {
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+}
+
+.section-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin: 0 0 28px;
+}
+
+/* Recommendation grid */
+
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.rec-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.rec-item .rec-icon {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.rec-item h4 {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--umber);
+  opacity: 0.65;
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+.rec-item p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.rec-item.avoid p {
+  color: var(--terracotta-dark);
+}
+
+/* Fabric swatch book — signature element */
+
+.swatch-book {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.swatch {
+  width: 110px;
+}
+
+.swatch-color {
+  width: 110px;
+  height: 140px;
+  border-radius: 6px 6px 4px 4px;
+  position: relative;
+  box-shadow: 0 6px 16px rgba(26,20,16,0.12);
+  overflow: hidden;
+}
+
+.swatch-color::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    115deg,
+    rgba(255,255,255,0.08) 0px,
+    rgba(255,255,255,0.08) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+}
+
+.swatch-color::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 1px dashed rgba(255,255,255,0.35);
+  border-radius: 3px;
+}
+
+.swatch-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* Looks / outfit grid */
+
+.look-list {
+  display: grid;
+  gap: 14px;
+}
+
+.look-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.look-row:last-child {
+  border-bottom: none;
+}
+
+.look-row .look-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  flex: 0 0 140px;
+}
+
+.look-row .look-desc {
+  color: var(--umber);
+}
+
+.festive-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.festive-list li {
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.festive-list li::before {
+  content: "✺ ";
+  color: var(--mustard);
+}
+
+/* Outfit inspiration */
+
+.outfit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.outfit-card img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.outfit-card .outfit-name {
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Retake link */
+
+.retake {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.retake a {
+  display: inline-block;
+  border: 1.5px solid var(--ink);
+  border-radius: 12px;
+  padding: 14px 32px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.15s ease;
+}
+
+.retake a:hover {
+  background: var(--ink);
+  color: var(--ivory);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 720px) {
+  .site-mark .tagline {
+    display: none;
+  }
+
+  .result-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .result-hero img.profile-shot {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  .quiz-card {
+    padding: 24px;
+  }
+
+  .look-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .look-row .look-name {
+    flex: none;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+
+:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

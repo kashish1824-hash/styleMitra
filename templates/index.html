@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StyleMitra — Your AI Personal Stylist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="wrap">
+  <header class="site-mark">
+    <a class="logo" href="/">Style<span>Mitra</span></a>
+    <span class="tagline">AI Stylist · For Indian Wardrobes</span>
+  </header>
+</div>
+
+<div class="wrap-narrow">
+
+  <section class="hero">
+    <span class="eyebrow">Personal Style Report</span>
+    <h1>Dressing that fits <em>you</em>, not the algorithm.</h1>
+    <p class="lede">
+      Upload a photo and answer two quick questions about your shape.
+      We'll work out your undertone and proportions, then map them to
+      colours, fits, and looks suited for Indian wardrobes — festive,
+      office, and everyday.
+    </p>
+  </section>
+
+  <form
+    class="quiz-card"
+    action="/analyze"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+
+    <div class="field">
+      <label class="field-label">
+        <span class="field-num">1</span>
+        A clear photo of your face
+      </label>
+      <label class="file-drop" id="fileDrop">
+        <input type="file" name="image" id="imageInput" accept="image/*" required>
+        <div class="file-drop-label" id="fileDropLabel">Tap to choose a photo</div>
+        <div class="file-drop-sub">Good natural light, face visible, no filters</div>
+      </label>
+    </div>
+
+    <div class="field">
+      <label class="field-label">
+        <span class="field-num">2</span>
+        Your body proportion
+      </label>
+      <div class="choice-grid">
+
+        <input type="radio" name="body_proportion" id="bp_rectangle" value="Rectangle" checked>
+        <label class="choice-pill" for="bp_rectangle">Rectangle</label>
+
+        <input type="radio" name="body_proportion" id="bp_hourglass" value="Hourglass">
+        <label class="choice-pill" for="bp_hourglass">Hourglass</label>
+
+        <input type="radio" name="body_proportion" id="bp_triangle" value="Triangle">
+        <label class="choice-pill" for="bp_triangle">Triangle (Pear)</label>
+
+        <input type="radio" name="body_proportion" id="bp_inv_triangle" value="Inverted Triangle">
+        <label class="choice-pill" for="bp_inv_triangle">Inverted Triangle</label>
+
+        <input type="radio" name="body_proportion" id="bp_apple" value="Apple">
+        <label class="choice-pill" for="bp_apple">Apple</label>
+
+        <input type="radio" name="body_proportion" id="bp_oval" value="Oval">
+        <label class="choice-pill" for="bp_oval">Oval</label>
+
+        <input type="radio" name="body_proportion" id="bp_trapezoid" value="Trapezoid">
+        <label class="choice-pill" for="bp_trapezoid">Trapezoid</label>
+
+      </div>
+      <p class="field-hint">
+        Triangle: hips wider than shoulders. Inverted Triangle: shoulders
+        wider than hips. Apple: fuller through the middle. Hourglass:
+        shoulders and hips balanced with a defined waist.
+      </p>
+    </div>
+
+    <div class="field">
+      <label class="field-label">
+        <span class="field-num">3</span>
+        Your torso length
+      </label>
+      <div class="choice-grid">
+
+        <input type="radio" name="torso_length" id="tl_balanced" value="Balanced" checked>
+        <label class="choice-pill" for="tl_balanced">Balanced</label>
+
+        <input type="radio" name="torso_length" id="tl_short" value="Short Torso">
+        <label class="choice-pill" for="tl_short">Short Torso</label>
+
+        <input type="radio" name="torso_length" id="tl_long" value="Long Torso">
+        <label class="choice-pill" for="tl_long">Long Torso</label>
+
+      </div>
+      <p class="field-hint">
+        Short torso usually pairs with relatively longer legs, and long
+        torso with relatively shorter legs.
+      </p>
+    </div>
+
+    <div class="field">
+      <label class="field-label">
+        <span class="field-num">4</span>
+        Your height
+      </label>
+      <div class="choice-grid">
+
+        <input type="radio" name="height" id="h_short" value="short">
+        <label class="choice-pill" for="h_short">Short</label>
+
+        <input type="radio" name="height" id="h_average" value="average" checked>
+        <label class="choice-pill" for="h_average">Average</label>
+
+        <input type="radio" name="height" id="h_tall" value="tall">
+        <label class="choice-pill" for="h_tall">Tall</label>
+
+      </div>
+    </div>
+
+    <button type="submit" class="btn-primary">Reveal my style report</button>
+
+  </form>
+
+</div>
+
+<div class="wrap">
+  <footer class="site-footer">
+    StyleMitra · Built on a rule-based recommendation engine derived from fashion styling data
+  </footer>
+</div>
+
+<script>
+  const input = document.getElementById('imageInput');
+  const drop = document.getElementById('fileDrop');
+  const label = document.getElementById('fileDropLabel');
+
+  input.addEventListener('change', () => {
+    if (input.files && input.files[0]) {
+      label.textContent = input.files[0].name;
+      drop.classList.add('has-file');
+    }
+  });
+</script>
+
+</body>
+</html>

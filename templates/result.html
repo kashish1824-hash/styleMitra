@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Style Report — StyleMitra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="wrap">
+  <header class="site-mark">
+    <a class="logo" href="/">Style<span>Mitra</span></a>
+    <span class="tagline">AI Stylist · For Indian Wardrobes</span>
+  </header>
+</div>
+
+<div class="wrap">
+
+  <div class="result-hero">
+
+    <img src="/{{ image_path }}" class="profile-shot" alt="Your photo">
+
+    <div>
+      <span class="result-eyebrow">Your Style Analysis</span>
+      <h1>{{ undertone }} Undertone</h1>
+
+      <div class="personality-banner">
+        <h3>{{ style_personality.title }}</h3>
+        <p>{{ style_personality.description }}</p>
+      </div>
+
+      <div class="tag-row">
+        <span class="tag"><span class="tag-label">Skin tone</span>{{ skin_tone }}</span>
+        <span class="tag"><span class="tag-label">Hair colour</span>{{ hair_color }}</span>
+        <span class="tag"><span class="tag-label">Body proportion</span>{{ body_proportion }}</span>
+        <span class="tag"><span class="tag-label">Torso</span>{{ torso_length }}</span>
+        <span class="tag"><span class="tag-label">Height</span>{{ height }}</span>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="section">
+    <span class="section-eyebrow">Colour &amp; Materials</span>
+    <h2>Your Palette</h2>
+
+    <div class="rec-grid">
+
+      <div class="rec-item">
+        <span class="rec-icon">🎨</span>
+        <h4>Wear</h4>
+        <p>{{ recommendation["Recommended Clothing Colors"] }}</p>
+      </div>
+
+      <div class="rec-item avoid">
+        <span class="rec-icon">🚫</span>
+        <h4>Avoid</h4>
+        <p>{{ recommendation["Avoid Clothing Colors"] }}</p>
+      </div>
+
+      <div class="rec-item">
+        <span class="rec-icon">💍</span>
+        <h4>Jewellery</h4>
+        <p>{{ recommendation["Recommended Jewelry Metal"] }}</p>
+      </div>
+
+      <div class="rec-item">
+        <span class="rec-icon">🌈</span>
+        <h4>Colour wheel region</h4>
+        <p>{{ recommendation["Recommended Clothing Color Wheel Region"] }}</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <span class="section-eyebrow">Silhouette</span>
+    <h2>Fit &amp; Pattern</h2>
+
+    <div class="rec-grid">
+
+      <div class="rec-item">
+        <span class="rec-icon">👔</span>
+        <h4>Fitting style</h4>
+        <p>{{ recommendation["Recommended Fitting Style"] }}</p>
+      </div>
+
+      <div class="rec-item">
+        <span class="rec-icon">🌀</span>
+        <h4>Patterns</h4>
+        <p>{{ recommendation["Recommended Patterns"] }}</p>
+      </div>
+
+      <div class="rec-item">
+        <span class="rec-icon">👠</span>
+        <h4>Footwear</h4>
+        <p>{{ recommendation["Recommended Shoes"] }}</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <span class="section-eyebrow">Swatch Book</span>
+    <h2>Best Colours For You</h2>
+
+    <div class="swatch-book">
+      {% for color in indian_style.best_colors %}
+      <div class="swatch">
+        <div class="swatch-color" style="background:{{ indian_style.best_colors_hex[loop.index0] }};"></div>
+        <div class="swatch-label">{{ color }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section">
+    <span class="section-eyebrow">Indian Style Guide</span>
+    <h2>Looks For Your Day</h2>
+
+    <div class="look-list">
+      <div class="look-row">
+        <span class="look-name">College / Casual</span>
+        <span class="look-desc">{{ indian_style.college_look }}</span>
+      </div>
+      <div class="look-row">
+        <span class="look-name">Office</span>
+        <span class="look-desc">{{ indian_style.office_look }}</span>
+      </div>
+    </div>
+
+    <h2 style="margin-top:36px;">Festive &amp; Wedding Wear</h2>
+    <ul class="festive-list">
+      {% for item in indian_style.festive %}
+      <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="section">
+    <span class="section-eyebrow">Lookbook</span>
+    <h2>Outfit Inspiration</h2>
+
+    <div class="outfit-grid">
+
+      <div class="outfit-card">
+        <img src="/static/outfits/casual.jpg" alt="Casual outfit inspiration">
+        <div class="outfit-name">Casual</div>
+      </div>
+
+      <div class="outfit-card">
+        <img src="/static/outfits/office.jpg" alt="Office outfit inspiration">
+        <div class="outfit-name">Office</div>
+      </div>
+
+      <div class="outfit-card">
+        <img src="/static/outfits/festive.jpg" alt="Festive outfit inspiration">
+        <div class="outfit-name">Festive</div>
+      </div>
+
+      <div class="outfit-card">
+        <img src="/static/outfits/weekend.jpg" alt="Weekend outfit inspiration">
+        <div class="outfit-name">Weekend</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="retake">
+    <a href="/">Try another photo</a>
+  </div>
+
+</div>
+
+<div class="wrap">
+  <footer class="site-footer">
+    StyleMitra · Built on a rule-based recommendation engine derived from fashion styling data
+  </footer>
+</div>
+
+</body>
+</html>
